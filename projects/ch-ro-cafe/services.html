@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services - Rohit Cyber Cafe</title>
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Body Styling */
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+
+    /* Header styling */
+    header {
+      background: #6A11CB;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    header h1 { font-size: 2em; }
+    
+    /* Section styling */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+      padding: 20px;
+    }
+    .section-title {
+      font-size: 2em;
+      color: #2575fc;
+      margin-bottom: 20px;
+    }
+
+    /* Services grid styling */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .service-card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    .service-card h3 {
+      font-size: 1.2em;
+      color: #6A11CB;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    /* Icon styling */
+    .icon {
+      font-size: 2em;
+      color: #ff6b6b;
+      margin-bottom: 10px;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .service-card { animation: fadeIn 1.5s ease-in-out; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1>Our Services</h1>
+</header>
+
+<!-- Services Section -->
+<section>
+  <h2 class="section-title">What We Offer</h2>
+  <p>Explore the range of services we provide at Rohit Cyber Cafe to make your life easier.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="icon">📜</span>
+      <h3>Birth Certificate</h3>
+      <p>Get your birth certificates processed quickly and efficiently right here in the village.</p>
+    </div>
+    
+    <div class="service-card">
+      <span class="icon">📝</span>
+      <h3>PAN Card Services</h3>
+      <p>Need a PAN card fast? We can get it done in just 2 hours, with no hassle.</p>
+    </div>
+    
+    <div class="service-card">
+      <span class="icon">📋</span>
+      <h3>Certificate Issuance</h3>
+      <p>Obtain essential documents like caste, income, and OBC certificates in no time.</p>
+    </div>
+    
+    <div class="service-card">
+      <span class="icon">🔧</span>
+      <h3>Aadhaar Corrections</h3>
+      <p>Correct your Aadhaar details quickly if your mobile number is linked.</p>
+    </div>
+    
+    <div class="service-card">
+      <span class="icon">📱</span>
+      <h3>Mobile Unlocking</h3>
+      <p>Locked out of your phone? We can unlock it for you in just 10 minutes.</p>
+    </div>
+    
+    <div class="service-card">
+      <span class="icon">🗳️</span>
+      <h3>Voter Card Services</h3>
+      <p>Apply for a new voter card or make corrections to your existing one with ease.</p>
+    </div>
+    
+    <div class="service-card">
+      <span class="icon">⚡</span>
+      <h3>Electricity Bill Payment</h3>
+      <p>Set up new electricity connections and pay bills, receiving instant receipts.</p>
+    </div>
+    
+    <div class="service-card">
+      <span class="icon">💸</span>
+      <h3>Banking Services</h3>
+      <p>Withdraw or deposit money right here at our cyber cafe for your convenience.</p>
+    </div>
+
+    <div class="service-card">
+      <span class="icon">🌐</span>
+      <h3>Online Applications</h3>
+      <p>We handle all kinds of online form submissions, saving you trips to the city.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

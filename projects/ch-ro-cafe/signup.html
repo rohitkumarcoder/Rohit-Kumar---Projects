@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Page</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #FF6B6B, #556270);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Signup Container */
+    .signup-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(8.5px);
+      -webkit-backdrop-filter: blur(8.5px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: 350px;
+      color: #fff;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Form Styling */
+    .signup-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Form Group Styling */
+    .form-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    /* Input Field Styling */
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #fff;
+      outline: none;
+      color: #fff;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      border-bottom-color: #ffc107;
+    }
+
+    /* Floating Label Styling */
+    .form-group label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      color: #fff;
+      font-size: 16px;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 8px;
+      font-size: 12px;
+      color: #ffc107;
+    }
+
+    /* Eye Icon Styling */
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 14px;
+      cursor: pointer;
+      color: #ffc107;
+    }
+
+    /* Button Styling */
+    button {
+      background: linear-gradient(45deg, #6A11CB, #2575FC);
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #2575FC, #6A11CB);
+      transform: scale(1.05);
+    }
+
+    /* Password Strength Indicator */
+    .strength-indicator {
+      margin-top: -12px;
+      margin-bottom: 12px;
+      color: #ffc107;
+      font-size: 14px;
+    }
+
+    /* Error Message Styling */
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: -12px;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    /* Login Link */
+    .login-link {
+      color: #ffc107;
+      text-decoration: none;
+      margin-top: 15px;
+      font-size: 14px;
+      display: inline-block;
+      transition: color 0.3s;
+    }
+
+    .login-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h2>Sign Up</h2>
+    <form id="signup-form" onsubmit="return validateSignupForm()">
+      <div class="form-group">
+        <input type="text" id="fullname" name="fullname" required placeholder=" ">
+        <label for="fullname">Full Name</label>
+      </div>
+
+      <div class="form-group">
+        <input type="email" id="email" name="email" required placeholder=" ">
+        <label for="email">Email</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="username" name="username" required placeholder=" ">
+        <label for="username">Username</label>
+      </div>
+
+      <div class="form-group">
+        <input type="password" id="password" name="password" required placeholder=" " oninput="checkPasswordStrength()">
+        <label for="password">Password</label>
+        <span class="toggle-password" onclick="togglePassword('password')">&#128065;</span>
+        <p class="strength-indicator" id="strength-indicator"></p>
+      </div>
+
+      <div class="form-group">
+        <input type="password" id="confirm-password" name="confirm-password" required placeholder=" ">
+        <label for="confirm-password">Confirm Password</label>
+        <span class="toggle-password" onclick="togglePassword('confirm-password')">&#128065;</span>
+        <p class="error-message" id="error-message">Passwords do not match!</p>
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+    
+    <!-- Login Link -->
+    <p>Already have an account? <a href="login.html" class="login-link">Login</a></p>
+  </div>
+
+  <script>
+    // Password Strength Checker
+    function checkPasswordStrength() {
+      const password = document.getElementById("password").value;
+      const strengthIndicator = document.getElementById("strength-indicator");
+
+      let strength = "Weak";
+      let color = "red";
+
+      if (password.length >= 8) {
+        if (/[a-z]/.test(password) && /[A-Z]/.test(password) && /\d/.test(password) && /\W/.test(password)) {
+          strength = "Strong";
+          color = "green";
+        } else if ((/[a-zA-Z]/.test(password) && /\d/.test(password)) || (/[a-zA-Z]/.test(password) && /\W/.test(password))) {
+          strength = "Moderate";
+          color = "orange";
+        }
+      }
+
+      strengthIndicator.textContent = `Password Strength: ${strength}`;
+      strengthIndicator.style.color = color;
+    }
+
+    // Password Match Validation
+    function validateSignupForm() {
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+      const errorMessage = document.getElementById("error-message");
+
+      if (password !== confirmPassword) {
+        errorMessage.style.display = "block";
+        return false;
+      } else {
+        errorMessage.style.display = "none";
+        return true;
+      }
+    }
+
+    // Toggle Password Visibility
+    function togglePassword(fieldId) {
+      const field = document.getElementById(fieldId);
+      field.type = field.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>

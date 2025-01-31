@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Rohit Cyber Cafe</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background: #f3f3f3;
+      overflow-x: hidden;
+    }
+
+    /* Section Styling */
+    .section {
+      max-width: 900px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      margin: 40px auto;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(100px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    /* Slide-in Animation */
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Logo Animation */
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Slogan Styling */
+    .slogan {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ff6b6b;
+      margin: 15px 0 25px;
+    }
+
+    /* Section titles */
+    h2 {
+      font-size: 2em;
+      color: #2575fc;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ff6b6b;
+    }
+
+    /* Paragraphs */
+    p {
+      line-height: 1.8;
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    /* Funny Quotes */
+    .quote {
+      font-size: 1.1em;
+      color: #ff6b6b;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    /* Service List */
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      font-size: 1em;
+      margin: 8px 0;
+      color: #333;
+      background: rgba(240, 240, 245, 0.7);
+      padding: 8px 15px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    /* Contact Information Styling */
+    .contact-info p {
+      margin: 5px 0;
+      font-size: 1em;
+      color: #333;
+    }
+
+    /* Float Animation for Logo */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="section">
+  <img src="rohit.png" alt="Rohit Cyber Cafe Logo" class="logo">
+  <p class="slogan">"Empowering Villages, One Click at a Time"</p>
+</div>
+
+<div class="section">
+  <h2>About Rohit Cyber Cafe</h2>
+  <p>Welcome to <strong>Rohit Cyber Cafe</strong> - where villagers meet technology, and things get done in a flash (almost)! We're the village superheroes of all things digital, here to make online services as easy as ordering chai! 🫖</p>
+  <p class="quote">"Why go to the city, when you can get it all here!"</p>
+</div>
+
+<div class="section">
+  <h2>What We Do</h2>
+  <p>Here’s our service list – or as we like to call it, our "What can't we do?" list:</p>
+  <ul>
+    <li>💼 Birth Certificates in a jiffy</li>
+    <li>📜 PAN Cards in 2 hours flat</li>
+    <li>🔄 Caste, Income & OBC Certificates</li>
+    <li>🔧 Aadhaar Corrections (if linked with mobile)</li>
+    <li>🔓 Mobile Unlocking in just 10 minutes</li>
+    <li>🗳️ Voter Cards & Corrections</li>
+    <li>⚡ Electricity Connections & Bill Payment</li>
+    <li>💸 Money Withdrawal & Deposits</li>
+    <li>📑 Land Receipts & Online Applications</li>
+  </ul>
+  <p class="quote">"If you need it, we probably do it!"</p>
+</div>
+
+<div class="section">
+  <h2>Meet the Team</h2>
+  <p>We’re a family-run operation, proudly known as the "Tech Zone Team". Here’s who’s who:</p>
+  <p><strong>Sakendra Saw</strong> - The mastermind and proud owner, always ready to lend a hand.</p>
+  <p><strong>Sudhir Kumar</strong> - The big brother and tech assistant, making sure all is running smoothly.</p>
+  <p><strong>Rohit Kumar</strong> - Website handler, the guy behind the scenes who makes it all look easy!</p>
+  <p class="quote">"Family-run, village-focused, and always ready to help!"</p>
+</div>
+
+<div class="section contact-info">
+  <h2>Contact Us</h2>
+  <p><strong>📍 Address:</strong> VILL GAMHARI POST, PS, Hematpur, Fateh Pur, Bihar 824232</p>
+  <p><strong>📞 Phone:</strong> +91 7635075052, +91 9973483427, +91 6202928290</p>
+  <p><strong>✉️ Email:</strong> <a href="mailto:rohitcybercafegamhari@gmail.com">rohitcybercafegamhari@gmail.com</a></p>
+  <p class="quote">"Visit us today – we’re closer than the city, and way more fun!"</p>
+</div>
+
+<script>
+  // Scroll Animation: Adds 'visible' class when each section is in the viewport
+  function handleScroll() {
+    const sections = document.querySelectorAll('.section');
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if (sectionTop < triggerBottom) {
+        section.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Run on page load in case some sections are already in view
+</script>
+
+</body>
+</html>

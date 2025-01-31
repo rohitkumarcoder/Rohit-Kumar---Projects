@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Cyber Cafe - Gamhari</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f4; /* Light background for better contrast */
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f8f9fa;
+        }
+
+        .logo span {
+            color: #ffc107; /* Different color for emphasis */
+        }
+
+        nav {
+            flex: 1;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: inline-flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: #f8f9fa;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #495057;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cta-buttons a {
+            background-color: #ffc107;
+            color: #343a40;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .cta-buttons a:hover {
+            background-color: #e0a800;
+        }
+
+        /* Image Slider Styles */
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto; /* Center the slider */
+            overflow: hidden;
+            border-radius: 5px; /* Rounded corners for the slider */
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Smooth transition */
+            width: 100%;
+        }
+
+        .slide {
+            min-width: 100%; /* Each slide takes full width */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Navigation Buttons */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background-color: #ffffff; /* White background for contrast */
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 5px; /* Slight rounding for a softer look */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 20px; /* Increased space for better readability */
+        }
+
+        /* Services Section Styles */
+        .services {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px; /* Rounded corners */
+            margin: 40px 0; /* Spacing above and below */
+        }
+
+        .services h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .services ul {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: left; /* Aligning list items for better readability */
+            max-width: 600px; /* Limiting width for better layout */
+            margin: 0 auto; /* Centering the list */
+        }
+
+        .services li {
+            margin-bottom: 8px;
+        }
+
+        /* Product Section Styles */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0; /* Spacing above and below */
+        }
+
+        .product-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+            background-color: #fff; /* White background for product items */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05); /* Scale up slightly */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px 5px 0 0; /* Rounded top corners for images */
+            transition: transform 0.3s ease;
+        }
+
+        .product-item:hover img {
+            transform: scale(1.08); /* Slight zoom on image when hovering over product */
+        }
+
+        .product-item button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners for buttons */
+            transition: background 0.3s;
+        }
+
+        .product-item button:hover {
+            background-color: #45a049; /* Darker green on hover */
+            color: #f0f0f0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Rohit Cyber Cafe <span>- Gamhari</span></div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="cta-buttons">
+            <a href="services.html">Services</a>
+            <a href="support.html">Support</a>
+        </div>
+    </header>
+
+    <!-- Image Slider Section -->
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="slide-show.jpg" alt="Product Image 1"> <!-- Replace with your image URL -->
+            </div>
+            <div class="slide">
+                <img src="slide-show.jpg" alt="Product Image 2"> <!-- Replace with your image URL -->
+            </div>
+            <div class="slide">
+                <img src="slide-show.jpg" alt="Product Image 3"> <!-- Replace with your image URL -->
+            </div>
+        </div>
+        <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Rohit Cyber Cafe</h1>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>➡️ जन्म प्रमाण पत्र</li>
+            <li>➡️ पैन कार्ड बनवाएं 2 घंटा में</li>
+            <li>➡️ पैन कार्ड सुधार</li>
+            <li>➡️ जाती, आवासीय, आय, ओ.बी.सी</li>
+            <li>➡️ मोबाइल नंबर लिंक रहने पर आधार कार्ड सुधार</li>
+            <li>➡️ सभी मोबाइल का लॉक खोलवाएँ मात्र 10 मिनट में</li>
+            <li>➡️ वोटर कार्ड</li>
+            <li>➡️ वोटर कार्ड सुधार</li>
+            <li>➡️ बिजली कनेक्शन ऑनलाइन</li>
+            <li>➡️ बिजली बिल जमा करके तुरंत रिसीविंग प्राप्त करें</li>
+            <li>➡️ पैसा निकासी एवं जमा</li>
+            <li>➡️ दाखिल खारिज</li>
+            <li>➡️ जमीन रसीद का बिल भुगतान</li>
+            <li>➡️ सभी प्रकार का ऑनलाइन फॉर्म आवेदन</li>
+        </ul>
+    </section>
+
+    <!-- Product Section -->
+    <section id="products" style="margin-top: 50px; padding: 20px; background-color: #f9f9f9;">
+        <h2 style="text-align: center; color: #333;">Our Products</h2>
+        <div class="product-grid">
+
+            <!-- Product 1: Charger -->
+            <div class="product-item">
+                <img src="charger.webp" alt="Charger">
+                <h3>High-Speed USB Charger</h3>
+                <p>Efficient charging with dual USB ports and surge protection.</p>
+                <p><strong>Price:</strong> ₹300</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <!-- Product 2: Earphone -->
+            <div class="product-item">
+                <img src="earphone.webp" alt="Earphone">
+                <h3>Wired Earphones</h3>
+                <p>High-quality sound with noise isolation.</p>
+                <p><strong>Price:</strong> ₹150</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <!-- Product 3: LED Bulb -->
+            <div class="product-item">
+                <img src="lightsbulb.webp" alt="LED Bulb">
+                <h3>LED Light Bulb</h3>
+                <p>Energy-efficient bulb with bright white light.</p>
+                <p><strong>Price:</strong> ₹80</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <!-- Product 4: Decorative Lights -->
+            <div class="product-item">
+                <img src="mixlight.webp" alt="Decorative Lights">
+                <h3>Colorful Decorative Lights</h3>
+                <p>Perfect for festivals and home decoration.</p>
+                <p><strong>Price:</strong> ₹200</p>
+                <button>Add to Cart</button>
+            </div>
+
+        </div>
+
+        <!-- Footer Section -->
+<footer style="background-color: #2d2f33; padding: 40px; color: white; font-family: Arial, sans-serif; position: relative; overflow: hidden;">
+
+    <!-- Floating Elements for Animation -->
+    <div class="footer-floating-circle"></div>
+    <div class="footer-floating-circle-small"></div>
+
+    <div class="footer-content">
+        <!-- Shop Info -->
+        <div class="footer-column">
+            <h3 style="color: #ffc107;">Rohit Cyber Cafe <span style="color: #17a2b8;">- Gamhari</span></h3>
+            <p>Empowering Villages, One Click at a Time</p>
+            <p>VILL GAMHARI POST, PS, Hematpur, Fateh Pur, Bihar 824232</p>
+            <p>Contact: +91 7635075052 | Email: rohitcybercafegamhari@gmail.com</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-column">
+            <h4 style="color: #ffdd57;">Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Social Links -->
+        <div class="footer-column">
+            <h4 style="color: #ffdd57;">Follow Us</h4>
+            <div class="footer-social-icons">
+                <a href="#" class="social-icon facebook"></a>
+                <a href="#" class="social-icon twitter"></a>
+                <a href="#" class="social-icon instagram"></a>
+            </div>
+            <p style="margin-top: 10px; color: #ffdd57;">"Serving Villages with a Smile 😊"</p>
+        </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 20px; color: #aaa;">&copy; 2024 Rohit Cyber Cafe - Gamhari. All Rights Reserved.</p>
+
+</footer>
+
+<!-- CSS for Footer Styling -->
+<style>
+    /* Footer Basic Styles */
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .footer-column {
+        flex: 1;
+    }
+
+    /* Footer Links */
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 8px;
+    }
+
+    .footer-links a {
+        color: #ffdd57;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #ffc107;
+    }
+
+    /* Social Icons */
+    .footer-social-icons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-icon {
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        background-size: cover;
+        transition: transform 0.3s;
+    }
+
+    .social-icon:hover {
+        transform: scale(1.1);
+    }
+
+    .facebook {
+        background-image: url('path/to/facebook-icon.png');
+    }
+
+    .twitter {
+        background-image: url('path/to/twitter-icon.png');
+    }
+
+    .instagram {
+        background-image: url('path/to/instagram-icon.png');
+    }
+
+    /* Floating Elements Animation */
+    .footer-floating-circle,
+    .footer-floating-circle-small {
+        position: absolute;
+        background-color: #ffdd57;
+        opacity: 0.6;
+        border-radius: 50%;
+        animation: float 8s infinite ease-in-out;
+        z-index: 1;
+    }
+
+    .footer-floating-circle {
+        width: 150px;
+        height: 150px;
+        bottom: -40px;
+        left: -40px;
+    }
+
+    .footer-floating-circle-small {
+        width: 80px;
+        height: 80px;
+        top: -30px;
+        right: -30px;
+        background-color: #17a2b8;
+        animation-duration: 10s;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+</style>
+
+    </section>
+
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = slides.children.length;
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+            slides.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // Automatic slide change every 5 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>
